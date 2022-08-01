@@ -3,7 +3,7 @@ import useMarvelService from '../../services/MarvelService';
 import ErrorMessage from '../errorMessage/Error';
 import Spinner from '../spinner/Spinner';
 import { useEffect, useState } from 'react';
-
+import { Link } from 'react-router-dom';
 
 const ComicsList = (props) => {
     const [comicsList, setComicsList] = useState([]);
@@ -36,11 +36,11 @@ const onRequest = (initial) => {
             return (
                 <li className="comics__item" key={i}>
                      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                    <a href="#">
+                    <Link to={`/comics/${item.id}`}>
                         <img src={item.thumbnail} alt={item.title} className="comics__item-img"/>
                         <div className="comics__item-name">{item.title}</div>
                         <div className="comics__item-price">{item.price}</div>
-                    </a>
+                        </Link>
                 </li>
             )
         })
